@@ -1,6 +1,7 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 import Header from "./Header";
 import ProductInfo from "./ProductInfo";
+import Footer from "./Footer";
 
 export default function ProductDetails(){
     return(
@@ -9,6 +10,7 @@ export default function ProductDetails(){
             <Header/>
             <ProductInfo/>
             </ScrollView>
+            <Footer/>
         </View>
     )
 }

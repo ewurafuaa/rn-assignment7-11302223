@@ -1,10 +1,11 @@
 import { StyleSheet, View, Image, Text } from "react-native";
 
-export default function ProductInfo(){
+export default function ProductInfo() {
     return (
         <View style={styles.container}>
-            <View>
-            <Image source={require('../assets/dress4.png')} style={styles.productImage} />
+
+            <View style={styles.imageContainer}>
+                <Image source={require('../assets/dress4.png')} style={styles.productImage} />
             </View>
 
             <View style={styles.productTitles}>
@@ -13,86 +14,190 @@ export default function ProductInfo(){
                 <Text style={styles.price}>$120</Text>
             </View>
 
-            <View>
-                <Image style={styles.export} source={require('../assets/Export.png')}></Image>
+            <View style={styles.exportContainer}>
+                <Image style={styles.export} source={require('../assets/Export.png')} />
             </View>
+
+
 
             <View style={styles.materials}>
-                <Text style={styles.heading}>Materials</Text>
-                <Text style={styles.description}>We work with monitoring programmes to ensure compliance with safety, health and quantity standards for our products.</Text>
+                <Text style={styles.heading}>MATERIALS</Text>
+                <Text style={styles.description}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products.</Text>
             </View>
+
+
 
             <View style={styles.instructionsContainer}>
-                <Image style={styles.icon} source={require('../assets/Do Not Bleach.png')}></Image>
-                <Text style={styles.bleach}>Do Not Bleach</Text>
+                <View style={styles.instruction}>
+                    <Image style={styles.instructionIcon} source={require('../assets/Do Not Bleach.png')} />
+                    <Text style={styles.instructionText}>Do not use bleach</Text>
+                </View>
                 
-                <Image style={styles.icon} source={require('../assets/Do Not Tumble Dry.png')}></Image>
-                <Text style={styles.dry}>Do Not Tumble Dry</Text>
+                <View style={styles.instruction}>
+                    <Image style={styles.instructionIcon} source={require('../assets/Do Not Tumble Dry.png')} />
+                    <Text style={styles.instructionText}>Do not tumble dry</Text>
+                </View>
 
-                <Image style={styles.icon} source={require('../assets/Do Not Wash.png')}></Image>
-                <Text style={styles.bleach}>Dry clean with tetrachloroethylene</Text>
+                <View style={styles.instruction}>
+                    <Image style={styles.instructionIcon} source={require('../assets/Do Not Wash.png')} />
+                    <Text style={styles.instructionText}>Dry clean with tetrachloroethylene</Text>
+                </View>
 
-                <Image style={styles.icon} source={require('../assets/Iron Low Temperature.png')}></Image>
-                <Text style={styles.bleach}>Iron at a maximum of 110°C/230°F</Text>
+                <View style={styles.instruction}>
+                    <Image style={styles.instructionIcon} source={require('../assets/Iron Low Temperature.png')} />
+                    <Text style={styles.instructionText}>Iron at a maximum of 110°C/230°F</Text>
+                </View>
             </View>
+
+
+
+            <View style={styles.line}></View>
+
+
+
+            <View style={styles.shippingContainer}>
+                <Image style={styles.shippingIcon} source={require('../assets/Shipping.png')}></Image>
+                <Image style={styles.arrow} source={require('../assets/Up.png')}></Image>
+                <Text style={styles.shippingText}>Free Flat Rate Shipping</Text>
+                <Text style={styles.estimatedDelivery}>Estimated to be delivered on</Text>
+                <Text style={styles.date}>09/11/2021 - 12/11/2021.</Text>
+            </View>
+
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        padding: 33,
-        bottom: 4,
-        
-      },
+        padding: 20,
+    },
 
-    productImage:{
+    imageContainer: {
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+
+    productImage: {
         width: 370,
         height: 460,
-        bottom: 80,
-        alignSelf: 'center'
     },
 
     productTitles: {
-        flex: 1,
-        position: 'absolute',
-        bottom: 205,
-        left: 35
+        marginBottom: 1,
+        alignItems: 'left',
+        top: 5,
+        left: 15
     },
 
     name: {
         fontSize: 28,
         letterSpacing: 6,
-        fontWeight: '400'
+        fontWeight: '400',
     },
 
-    subtitle:{
+    subtitle: {
         fontSize: 18,
         color: '#737373',
-        letterSpacing: 1,
-        top: 4,
-        fontWeight: '400'
+        marginTop: 4,
+        fontWeight: '400',
     },
 
-    price:{
+    price: {
         fontSize: 30,
         fontWeight: '400',
         color: '#D18035',
-        top: 8
+        marginTop: 8,
+    },
+
+    exportContainer: {
+        alignItems: 'flex-end',
+        bottom: 99,
+        right: 13
     },
 
     export: {
-        bottom: 110,
-        left: 160
+        width: 24,
+        height: 24,
     },
 
-    materials:{
-        left: 23,
+    materials: {
+        marginBottom: 20,
+        alignItems: 'left'
+    },
 
+    heading: {
+        fontSize: 20,
+        letterSpacing: 3,
+        fontWeight: '400',
+        left: 17
+    },
+
+    description: {
+        fontSize: 18,
+        marginTop: 10,
+        left: 17,
+        color: '#737373',
+    },
+
+    instructionsContainer: {
+        marginTop: 10,
+    },
+
+    instruction: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+        left: 17
+    },
+
+    instructionIcon: {
+        width: 24,
+        height: 24,
+        marginRight: 10,
+        tintColor: '#737373',
+    },
+
+    instructionText: {
+        fontSize: 16,
+        color: '#737373',
+    },
+
+    line: {
+        height: 1,
+        backgroundColor: '#737373',
+        marginVertical: 20,
+        width: 310,
+        left: 20,
+        opacity: '0.3'
+    },
+
+    shippingIcon:{
+        left: 20,
+    },
+
+    shippingText: {
+        bottom: 44,
+        left: 55,
+        fontWeight: '400'
+    },
+
+    estimatedDelivery: {
+        bottom: 35,
+        left: 55,
+        color: '#737373',
+    },
+
+    date:{
+        bottom: 30,
+        left: 55,
+        color: '#737373',
+    },
+    arrow: {
+        bottom: 20,
+        left: 340
     }
 
 
-})
+
+
+});
