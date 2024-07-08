@@ -1,11 +1,14 @@
-import { StyleSheet, Image, View } from "react-native";
+import React from "react";
+import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
 
-export default function Header(){
+export default function Header({toggleSidebar}){
     return (
     <View style={styles.container}>
-        <View>
+        
+        <TouchableOpacity onPress={toggleSidebar}>
             <Image style={styles.menu} source={require('../assets/Menu.png')}></Image>
-        </View>
+        </TouchableOpacity>
+
         <View>
             <Image style={styles.logo} source={require('../assets/Logo.png')}></Image>
         </View>
