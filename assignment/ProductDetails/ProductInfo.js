@@ -1,17 +1,23 @@
+import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
 export default function ProductInfo() {
+
+    const route = useRoute();
+    const { product } = route.params;
+
     return (
         <View style={styles.container}>
 
             <View style={styles.imageContainer}>
-                <Image source={require('../assets/dress4.png')} style={styles.productImage} />
+                <Image source={product.image} style={styles.productImage} />
             </View>
 
             <View style={styles.productTitles}>
-                <Text style={styles.name}>LAMEREI</Text>
-                <Text style={styles.subtitle}>Recycle Boucle Knit Cardigan Pink</Text>
-                <Text style={styles.price}>$120</Text>
+                <Text style={styles.name}>{product.name}</Text>
+                <Text style={styles.description}>{product.description}</Text>
+                <Text style={styles.price}>{product.price}</Text>
             </View>
 
             <View style={styles.exportContainer}>
@@ -22,7 +28,7 @@ export default function ProductInfo() {
 
             <View style={styles.materials}>
                 <Text style={styles.heading}>MATERIALS</Text>
-                <Text style={styles.description}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products.</Text>
+                <Text style={styles.subtitle}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products.</Text>
             </View>
 
 
@@ -95,7 +101,7 @@ const styles = StyleSheet.create({
         fontWeight: '400',
     },
 
-    subtitle: {
+    description: {
         fontSize: 18,
         color: '#737373',
         marginTop: 4,
@@ -132,7 +138,7 @@ const styles = StyleSheet.create({
         left: 17
     },
 
-    description: {
+    subtitle: {
         fontSize: 18,
         marginTop: 10,
         left: 17,

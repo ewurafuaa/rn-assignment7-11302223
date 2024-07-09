@@ -4,13 +4,16 @@ import Header from "./Header";
 import ProductInfo from "./ProductInfo";
 import Footer from "./Footer";
 import Sidebar from "../Others/Sidebar";
+import { useRoute } from "@react-navigation/native";
 
 const screenWidth = Dimensions.get('window').width;
 
 export default function ProductDetails(){
 
     const [sidebarVisible, setSidebarVisible] = useState(false);
-    const sidebarAnimation = useRef(new Animated.Value(-screenWidth/2)).current
+    const sidebarAnimation = useRef(new Animated.Value(-screenWidth/2)).current;
+    const route = useRoute();
+    const {product} = route.params;
 
     const toggleSidebar = () => {
         if (sidebarVisible) {
@@ -34,7 +37,7 @@ export default function ProductDetails(){
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scroll}>
             <Header toggleSidebar={toggleSidebar}/>
-            <ProductInfo/>
+            <ProductInfo product={product}/>
             </ScrollView>
             <Footer/>
 
