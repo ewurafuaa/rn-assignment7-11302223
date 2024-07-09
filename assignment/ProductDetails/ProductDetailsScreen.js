@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView, Animated, Dimensions } from "react-native
 import Header from "./Header";
 import ProductInfo from "./ProductInfo";
 import Footer from "./Footer";
-import Sidebar from "../Others/Sidebar";
+import Sidebar from "../Components/Sidebar";
 import { useRoute } from "@react-navigation/native";
 
 const screenWidth = Dimensions.get('window').width;

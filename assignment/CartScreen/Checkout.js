@@ -1,8 +1,10 @@
 import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
-import { useCart } from "../Others/CartContext";
+import { useCart } from "../Components/CartContext";
 
 const CartList = ({item}) => {
     const {dispatch} = useCart()
+
+    const remove = require('../assets/remove.png')
 
     const removeFromCart = () => {
         dispatch({type: 'REMOVE_FROM_CART', payload: item.id})
@@ -14,11 +16,11 @@ const CartList = ({item}) => {
         <View style={styles.productDetails}>
             <Text style={styles.name}>{item.name}</Text>
             <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.price}>{item.price}</Text>
+            <Text style={styles.price}>{item.price.toFixed(0)}</Text>
         </View>
         <View>
             <TouchableOpacity style={styles.removeButton} onPress={removeFromCart}>
-                <Image source={item.remove} style={styles.removeImage} />
+                <Image source={remove} style={styles.removeImage} />
             </TouchableOpacity>
         </View>
     </View>
