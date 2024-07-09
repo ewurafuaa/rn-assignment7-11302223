@@ -1,10 +1,13 @@
 import React from "react";
-import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Header({toggleSidebar}){
-    return (
+    const navigation = useNavigation();
+
+    return(
     <View style={styles.container}>
-        
+
         <TouchableOpacity onPress={toggleSidebar}>
             <Image style={styles.menu} source={require('../assets/Menu.png')}></Image>
         </TouchableOpacity>
@@ -15,7 +18,9 @@ export default function Header({toggleSidebar}){
 
         <View style={styles.iconsContainer}>
             <Image style={styles.search} source={require('../assets/Search.png')}></Image>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
             <Image style={styles.shoppingBag} source={require('../assets/shoppingBag.png')}></Image>
+            </TouchableOpacity>
         </View>
     </View>
     )
@@ -27,7 +32,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 20,
-        paddingTop: 50,
+        paddingTop: 60,
         paddingBottom: 10,
         flexDirection: 'row',
         borderColor: 'black',
@@ -65,3 +70,13 @@ const styles = StyleSheet.create({
         position: 'relative',
     }
 })
+
+
+
+
+
+        
+
+
+
+

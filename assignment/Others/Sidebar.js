@@ -1,10 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, Animated, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function Sidebar({toggleSidebar, sidebarAnimation}) {
+    const navigation = useNavigation();
+
+    const navigateToHomeScreen = () => {
+        toggleSidebar();
+        navigation.navigate('Home');
+    }
+
     return(
         <Animated.View style={[styles.sidebar, {transform: [{translateX: sidebarAnimation}]}]}>
             <TouchableOpacity style={styles.hideSidebar} onPress={toggleSidebar}>
@@ -15,7 +23,10 @@ export default function Sidebar({toggleSidebar, sidebarAnimation}) {
 
                 <View style={styles.line}></View>
 
+                <TouchableOpacity onPress={navigateToHomeScreen}>
                 <Text style={styles.options}>Store</Text>
+                </TouchableOpacity>
+
                 <Text style={styles.options}>Locations</Text>
                 <Text style={styles.options}>Blog</Text>
                 <Text style={styles.options}>Jewelry</Text>
