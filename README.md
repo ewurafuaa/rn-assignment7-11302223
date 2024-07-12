@@ -29,7 +29,7 @@ The Cart Screen consists of the Header, Checkout, Footer and CartScreen javascri
 ## Header.js
 The Header.js file contains the code for the header of the Cart Screen. It contains the backward icon(which now serves as the navigation back to the home screen instead of the logo like in the previous assignment), the logo, a search icon, the page title text('CHECKOUT'), and an image of a border I created myself to mimic the border in the UI mockup.
 ## Checkout.js
-This renders the items in the Home Screen so when products are added to cart from the home screen, they appear on the cart screen. It also allows a user to delete items from the cart screen and when there are no products in the user's cart, a message is displayed to tell the user precisely that.
+This renders the items in the Home Screen so when products are added to cart from the home screen, they appear on the cart screen. It also allows a user to delete items from the cart screen and when there are no products in the user's cart, a message is displayed to tell the user precisely that. When a product in the Checkout.js is clicked on, it takes the user to the details page of the product.
 ## Footer.js
 This file contains the checkout button, and displays the estimated sum of the products added to the cart screen
 ## CartScreen.js

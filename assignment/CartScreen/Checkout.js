@@ -1,7 +1,9 @@
 import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
 import { useCart } from "../Components/CartContext";
+import { useNavigation } from "@react-navigation/native";
 
 const CartList = ({ item }) => {
+    const navigation = useNavigation();
     const { dispatch } = useCart();
 
     const removeFromCart = () => {
@@ -10,16 +12,16 @@ const CartList = ({ item }) => {
         }
     };
 
-    if (!item) {
-        return null;
-    }
+    const navigateToDetail = () => {
+        navigation.navigate('ProductDetails', { product: item });
+    };
 
     const truncatedDescription = item.description.length > 50
         ? item.description.substring(0, 47) + "..."
         : item.description;
-
+        
     return (
-        <View style={styles.cartList}>
+        <TouchableOpacity onPress={navigateToDetail} style={styles.cartList}>
             <Image source={{ uri: item.image.uri }} style={styles.productImage} />
             <View style={styles.productDetails}>
                 <Text style={styles.title}>{item.title.toUpperCase()}</Text>
@@ -31,7 +33,7 @@ const CartList = ({ item }) => {
                     <Image source={require('../assets/remove.png')} style={styles.removeImage} />
                 </TouchableOpacity>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 
