@@ -47,6 +47,7 @@ This file, Sidebar.js, defines a sidebar component that includes animations for 
 ![WhatsApp Image 2024-07-12 at 19 09 43_b870ce3e](https://github.com/user-attachments/assets/7504dd4a-391e-42ce-82b8-e3e4db140b47)
 ![WhatsApp Image 2024-07-12 at 19 09 49_2cc897ef](https://github.com/user-attachments/assets/45f2da1c-2e18-496a-9ee3-a8041452fad8)
 ![WhatsApp Image 2024-07-12 at 19 09 55_c432f55f](https://github.com/user-attachments/assets/894c99f7-d0db-488a-beab-78b90ab0f742)
+![WhatsApp Image 2024-07-12 at 19 33 39_d8d0bdab](https://github.com/user-attachments/assets/efeb9c14-4823-4735-ad8b-44c8b6319e6c)
 
 ### CartScreen
 #### Empty Cart
