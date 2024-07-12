@@ -8,10 +8,8 @@ export default function Header(){
         <>
         <View style={styles.header}>
             <TouchableOpacity style={styles.return} onPress={() => navigation.navigate('Home')}>
-                <Image style={styles.backward}source={require('../assets/Backward.png')}></Image>
+                <Image style={styles.logo} source={require('../assets/Logo.png')}></Image>
             </TouchableOpacity>
-
-            <Image style={styles.logo} source={require('../assets/Logo.png')}></Image>
             <Image style={styles.search} source={require('../assets/Search.png')}></Image>
         </View>
 

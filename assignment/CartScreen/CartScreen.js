@@ -1,17 +1,20 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, Text } from "react-native";
+import { useCart } from "../Components/CartContext";
 import Header from "./Header";
 import Footer from "./Footer";
 import Checkout from "./Checkout";
 
 export default function CartScreen({navigation}){
+    const { cart } = useCart();
+    const product = cart.length > 0 ? cart[0] : null;
     return(
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scroll}>
             <Header navigation={navigation}/>
             <Checkout/>
             </ScrollView>
-            <Footer/>
+            {product ? <Footer product={product}/> : <Text>No product available</Text>}
         </View>
     )
 }
