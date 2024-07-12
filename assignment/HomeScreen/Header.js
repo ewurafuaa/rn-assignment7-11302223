@@ -39,7 +39,7 @@ export default function Header() {
                 <TouchableOpacity style={styles.closeButtonContainer} onPress={toggleMenu}>
                     <Image style={styles.closeButton} source={require('../assets/Close.png')} />
                 </TouchableOpacity>
-                <Text style={styles.menuNameText}>CALEB TETTEH</Text>
+                <Text style={styles.menuNameText}>EWURAFUA QUANSAH</Text>
                 <View style={styles.line} />
                 <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <Text style={styles.menuText}>Store</Text>
