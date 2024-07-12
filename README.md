@@ -29,7 +29,7 @@ The Cart Screen consists of the Header, Checkout, Footer and CartScreen javascri
 ## Header.js
 The Header.js file contains the code for the header of the Cart Screen. It contains the backward icon(which now serves as the navigation back to the home screen instead of the logo like in the previous assignment), the logo, a search icon, the page title text('CHECKOUT'), and an image of a border I created myself to mimic the border in the UI mockup.
 ## Checkout.js
-This renders the items in the Home Screen so when products are added to cart from the home screen, they appear on the cart screen. It also allows a user to delete items from the cart screen and when there are no products in the user's cart, a message is displayed to tell the user precisely that. When a product in the Checkout.js is clicked on, it takes the user to the details page of the product.
+This renders the items in the Home Screen so when products are added to cart from the home screen, they appear on the cart screen. It also allows a user to delete items from the cart screen and when there are no products in the user's cart, a message is displayed to tell the user precisely that.
 ## Footer.js
 This file contains the checkout button, and displays the estimated sum of the products added to the cart screen
 ## CartScreen.js
@@ -44,16 +44,23 @@ This file, Sidebar.js, defines a sidebar component that includes animations for 
 
 # Screenshots of the App
 ### HomeScreen
+![WhatsApp Image 2024-07-12 at 19 09 43_b870ce3e](https://github.com/user-attachments/assets/7504dd4a-391e-42ce-82b8-e3e4db140b47)
+![WhatsApp Image 2024-07-12 at 19 09 49_2cc897ef](https://github.com/user-attachments/assets/45f2da1c-2e18-496a-9ee3-a8041452fad8)
+![WhatsApp Image 2024-07-12 at 19 09 55_c432f55f](https://github.com/user-attachments/assets/894c99f7-d0db-488a-beab-78b90ab0f742)
 
 ### CartScreen
-
 #### Empty Cart
-
+![WhatsApp Image 2024-07-12 at 19 10 15_602c51b8](https://github.com/user-attachments/assets/ce7613e8-d7a4-44ef-9815-290d5a184e38)
 #### Items Added To Cart
-
+![WhatsApp Image 2024-07-12 at 19 10 21_c99e44fb](https://github.com/user-attachments/assets/d126c756-fd52-4859-a5ca-2e8c0f2fd855)
 #### Items Removed From Cart
-
+![WhatsApp Image 2024-07-12 at 19 10 10_e7217231](https://github.com/user-attachments/assets/d0323f07-26bc-446c-8065-9e691122adfc)
 
 ### Product Details
+![WhatsApp Image 2024-07-12 at 19 10 30_4b174b9e](https://github.com/user-attachments/assets/6b5fb1c7-5c7a-44d1-92ab-c63fb0d4f441)
+![WhatsApp Image 2024-07-12 at 19 11 36_e40fb6d9](https://github.com/user-attachments/assets/82590e5f-5f5c-4b1a-9c47-2c5b5cd56a52)
+![WhatsApp Image 2024-07-12 at 19 10 38_a402b796](https://github.com/user-attachments/assets/4fbe4b7e-7f1b-4897-9c62-c346b43e1533)
+![WhatsApp Image 2024-07-12 at 19 10 49_e72b4b9d](https://github.com/user-attachments/assets/dc3cd8dc-6005-4906-9152-bab53538a94a)
 
 ### Sidebar
+![WhatsApp Image 2024-07-12 at 19 11 42_b0181c31](https://github.com/user-attachments/assets/ce47f359-8209-4cd5-9f7a-3a6351abbacd)
