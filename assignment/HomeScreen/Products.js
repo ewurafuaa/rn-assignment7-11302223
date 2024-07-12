@@ -14,18 +14,12 @@ const fetchProducts = async () => {
       image: { uri: product.image },
       price: product.price.toString(),
     }));
+    
     return products;
   } catch (error) {
     console.error(error);
     return [];
   }
-};
-
-const truncateText = (text, maxLength) => {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + '...';
-  }
-  return text;
 };
 
 function ProductCard({ product, showDescription }) {
@@ -48,9 +42,13 @@ function ProductCard({ product, showDescription }) {
           <Image style={styles.addButton} source={require('../assets/add_circle.png')} />
         </TouchableOpacity>
       </View>
-      <Text style={styles.name}>{product.title}</Text>
-      {showDescription && <Text style={styles.description}>{truncateText(product.description, 50)}</Text>}
-      <Text style={styles.price}>{product.price}</Text>
+      <Text style={styles.title}>{product.title}</Text>
+      {showDescription && (
+        <Text style={styles.description} numberOfLines={2} ellipsizeMode="tail">
+          {product.description}
+        </Text>
+      )}
+      <Text style={styles.price}>${product.price}</Text>
     </TouchableOpacity>
   );
 }
@@ -76,46 +74,57 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: 20,
+    top: 20,
+    right: 15
   },
+
   card: {
     width: '45%',
     marginBottom: 20,
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFF',
     alignItems: 'center',
+    alignItems: 'flex-start'
   },
+
   image: {
     width: 180,
     height: 250,
     marginBottom: 10,
   },
-  name: {
+
+  title: {
     fontSize: 18,
-    fontWeight: '300',
+    fontWeight: '400',
     marginVertical: 5,
     textAlign: 'left',
+    
   },
+
   description: {
     fontSize: 14,
     color: '#737373',
     textAlign: 'left',
-    fontWeight: '300',
+    fontWeight: '400',
   },
+
   price: {
     fontSize: 16,
-    fontWeight: '300',
+    fontWeight: '400',
     color: '#D18035',
     marginVertical: 5,
     textAlign: 'left',
   },
+
   addProduct: {
     position: 'absolute',
     bottom: 20,
     right: 10,
   },
+
   addButton: {
     width: 30,
     height: 30,
-  },
+  }
 });

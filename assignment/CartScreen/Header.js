@@ -62,13 +62,14 @@ const styles = StyleSheet.create({
     checkoutContainer:{
         position: 'relative',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 30,
         height: 100,
+
     },
 
     checkout: {
         position: 'absolute',
-        top: 60,
+        top: 55,
         right: 103,
         fontSize: 27,
         letterSpacing: 6,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
 
     bottomLine: {
         position: 'absolute',
-        top: 80,
+        top: 70,
         width: 200,
         height: 60,
         alignSelf: 'center',

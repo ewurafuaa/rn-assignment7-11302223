@@ -14,7 +14,7 @@ export default function CartScreen({navigation}){
             <Header navigation={navigation}/>
             <Checkout/>
             </ScrollView>
-            {product ? <Footer product={product}/> : <Text>No product available</Text>}
+            <Footer/>
         </View>
     )
 }

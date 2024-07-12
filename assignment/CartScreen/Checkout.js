@@ -1,58 +1,65 @@
 import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
 import { useCart } from "../Components/CartContext";
 
-const CartList = ({item}) => {
-    const {dispatch} = useCart()
+const CartList = ({ item }) => {
+    const { dispatch } = useCart();
 
     const removeFromCart = () => {
-    if(item && item.id){
-        dispatch({type: 'REMOVE_FROM_CART', payload: item.id})
+        if (item && item.id) {
+            dispatch({ type: 'REMOVE_FROM_CART', payload: item.id });
         }
     };
-    if(!item){
+
+    if (!item) {
         return null;
     }
 
-    return(
-    <View style={styles.cartList}>
-        <Image source={{uri: item.image.uri}} style={styles.productImage} />
-        <View style={styles.productDetails}>
-            <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.price}>{item.price}</Text>
-        </View>
-        <View>
-            <TouchableOpacity style={styles.removeButton} onPress={removeFromCart}>
-                <Image source={require('../assets/remove.png')} style={styles.removeImage} />
-            </TouchableOpacity>
-        </View>
-    </View>
-    )
-}
+    const truncatedDescription = item.description.length > 50
+        ? item.description.substring(0, 47) + "..."
+        : item.description;
 
-export default function Checkout(){
-    const {cart} = useCart();
-    if (!cart) {
-        return null;
-      }
+    return (
+        <View style={styles.cartList}>
+            <Image source={{ uri: item.image.uri }} style={styles.productImage} />
+            <View style={styles.productDetails}>
+                <Text style={styles.title}>{item.title.toUpperCase()}</Text>
+                <Text style={styles.description} numberOfLines={1}>{truncatedDescription}</Text>
+                <Text style={styles.price}>${item.price}</Text>
+            </View>
+            <View>
+                <TouchableOpacity style={styles.removeButton} onPress={removeFromCart}>
+                    <Image source={require('../assets/remove.png')} style={styles.removeImage} />
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
+
+export default function Checkout() {
+    const { cart } = useCart();
     
-    return(
-    <View style={styles.container}>
-        {cart.map(item => {
-            if (item && item.id) {
-                return <CartList key={item.id} item={item}></CartList>;
-            }
-            return null;
-        })}
-    </View>
-    )
+    return (
+        <View style={styles.container}>
+            {cart.length > 0 ? (
+                cart.map(item => {
+                    if (item && item.id) {
+                        return <CartList key={item.id} item={item}></CartList>;
+                    }
+                    return null;
+                })
+            ) : (
+                <Text style={styles.emptyCartText}>There are no products in your cart.</Text>
+            )}
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#FFFFF',
+        backgroundColor: '#FFFFFF',
+        top: 70
     },
 
     cartList: {
@@ -60,32 +67,32 @@ const styles = StyleSheet.create({
         padding: 13,
         alignItems: 'center',
         position: 'relative',
-        top: 15,
-        
+        bottom: 50,
     },
 
     productImage: {
         width: 90,
         height: 120,
         marginRight: 11,
-        
-        
-    }, 
-
-    productDetails:{
-        flex: 1,
     },
 
-    name: {
+    productDetails: {
+        flex: 1,
+        left: 10
+    },
+
+    title: {
         fontSize: 15,
         letterSpacing: 4,
         fontWeight: '400'
     },
 
-    description:{
+    description: {
         fontSize: 15,
         fontWeight: '400',
-        color: '#737373'
+        color: '#737373',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
     },
 
     price: {
@@ -95,15 +102,22 @@ const styles = StyleSheet.create({
 
     removeButton: {
         position: 'absolute',
-        justifyContent:'center',
+        justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
         right: 30,
     },
 
-    removeImage:{
+    removeImage: {
         width: 20,
         height: 20,
     },
-    
-})
+
+    emptyCartText: {
+        textAlign: 'center',
+        marginTop: 20,
+        fontSize: 18,
+        color: '#737373',
+        top: 140
+    },
+});

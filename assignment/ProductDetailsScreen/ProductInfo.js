@@ -6,27 +6,54 @@ export default function ProductInfo({ route }) {
 
   return (
     <View style={styles.container}>
-      <Image source={product.image} style={styles.image} />
-      <Text style={styles.name}>{product.title}</Text>
-      <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.price}>{product.price}</Text>
-      <Text style={styles.materialText}>MATERIALS</Text>
-      <View>
-        <Image style={styles.shareImage} source={require('../assets/Export.png')} />
-        <Text style={styles.description2}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products.</Text>
-        <Image style={styles.bleach} source={require('../assets/Do Not Bleach.png')} />
-        <Text style={styles.description3}>Do not use bleach</Text>
-        <Image style={styles.tumbleDry} source={require('../assets/Do Not Tumble Dry.png')} />
-        <Text style={styles.description4}>Do not tumble dry</Text>
-        <Image style={styles.wash} source={require('../assets/Do Not Wash.png')} />
-        <Text style={styles.description5}>Dry clean with tetrachloroethylene</Text>
-        <Image style={styles.iron} source={require('../assets/Iron Low Temperature.png')} />
-        <Text style={styles.description6}>Iron at a maximum of 110oC/230oF</Text>
-        <View style={styles.line1} />
-        <Image style={styles.shipping} source={require('../assets/Shipping.png')} />
-        <Text style={styles.description7}>Free Flat Rate Shipping</Text>
-        <Image style={styles.up} source={require('../assets/Up.png')} />
-        <Text style={styles.description8}>Estimated to be delivered on</Text>
+      <View style={styles.imageContainer}>
+        <Image source={product.image} style={styles.productImage} />
+      </View>
+
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{product.title.toUpperCase()}</Text>
+        <Image style={styles.export} source={require('../assets/Export.png')} />
+      </View>
+
+      <View style={styles.productDetails}>
+        <Text style={styles.description}>{product.description}</Text>
+        <Text style={styles.price}>${product.price}</Text>
+      </View>
+
+      <View style={styles.materials}>
+        <Text style={styles.heading}>MATERIALS</Text>
+        <Text style={styles.subtitle}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products.</Text>
+      </View>
+
+      <View style={styles.instructionsContainer}>
+        <View style={styles.instruction}>
+          <Image style={styles.instructionIcon} source={require('../assets/Do Not Bleach.png')} />
+          <Text style={styles.instructionText}>Do not use bleach</Text>
+        </View>
+
+        <View style={styles.instruction}>
+          <Image style={styles.instructionIcon} source={require('../assets/Do Not Tumble Dry.png')} />
+          <Text style={styles.instructionText}>Do not tumble dry</Text>
+        </View>
+
+        <View style={styles.instruction}>
+          <Image style={styles.instructionIcon} source={require('../assets/Do Not Wash.png')} />
+          <Text style={styles.instructionText}>Dry clean with tetrachloroethylene</Text>
+        </View>
+
+        <View style={styles.instruction}>
+          <Image style={styles.instructionIcon} source={require('../assets/Iron Low Temperature.png')} />
+          <Text style={styles.instructionText}>Iron at a maximum of 110°C/230°F</Text>
+        </View>
+      </View>
+
+      <View style={styles.line}></View>
+
+      <View style={styles.shippingContainer}>
+        <Image style={styles.shippingIcon} source={require('../assets/Shipping.png')} />
+        <Image style={styles.arrow} source={require('../assets/Up.png')} />
+        <Text style={styles.shippingText}>Free Flat Rate Shipping</Text>
+        <Text style={styles.estimatedDelivery}>Estimated to be delivered on</Text>
         <Text style={styles.date}>09/11/2021 - 12/11/2021.</Text>
       </View>
     </View>
@@ -35,118 +62,136 @@ export default function ProductInfo({ route }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
   },
-  image: {
-    width: 380,
-    height: 470,
+
+  imageContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
   },
-  name: {
+
+  productImage: {
+    width: 370,
+    height: 460,
+  },
+
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    marginHorizontal: 10,
+  },
+
+  title: {
     fontSize: 24,
-    marginVertical: 10,
+    letterSpacing: 3,
+    fontWeight: '400',
+    flex: 1,
   },
+
+  export: {
+    width: 24,
+    height: 24,
+  },
+
+  productDetails: {
+    marginHorizontal: 10,
+  },
+
   description: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#737373',
-    marginVertical: 3,
+    marginTop: 4,
+    fontWeight: '400',
   },
+
   price: {
     fontSize: 24,
+    fontWeight: '400',
     color: '#D18035',
-    marginVertical: 3,
+    marginTop: 8,
   },
-  materialText:{
-    fontSize: 16,
-    marginVertical: 25,
-    letterSpacing: 3
+
+  materials: {
+    marginVertical: 20,
+    marginHorizontal: 15,
   },
-  description2:{
+
+  heading: {
+    fontSize: 20,
+    letterSpacing: 3,
+    fontWeight: '400',
+  },
+
+  subtitle: {
     fontSize: 18,
-    letterSpacing: 2,
-    marginVertical: -30,
+    marginTop: 10,
     color: '#737373',
   },
-  shareImage:{
-    left: 335,
-    top: -55,
+
+  instructionsContainer: {
+    marginTop: 10,
+    marginHorizontal: 15,
   },
-  bleach:{
-    top: 60,
-    width: 30,
-    height: 30,
+
+  instruction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
-  description3:{
-    fontSize: 19,
-    marginVertical: 35,
-    left: 50,
+
+  instructionIcon: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
+    tintColor: '#737373',
+  },
+
+  instructionText: {
+    fontSize: 16,
     color: '#737373',
   },
-  tumbleDry:{
-    width: 30,
-    height: 30,
-  },
-  description4:{
-    fontSize: 19,
-    left: 50,
-    color: '#737373',
-    marginVertical: -25,
-  },
-  wash:{
-    width: 30,
-    height: 30,
-    top: 55
-  },
-  description5:{
-    fontSize: 19,
-    left: 50,
-    color: '#737373',
-    marginVertical: 30,
-  },
-  iron:{
-    width: 30,
-    height: 30,
-  },
-  description6:{
-    fontSize: 19,
-    left: 50,
-    color: '#737373',
-    marginVertical: -25,
-  },
-  line1:{
-    height: 1, 
-    width: 360,
+
+  line: {
+    height: 1,
     backgroundColor: '#737373',
-    marginVertical: 60,
+    marginVertical: 20,
+    width: 310,
+    left: 20,
+    opacity: '0.3'
   },
-  shipping:{
-    width: 30,
-    height: 30,
-    top: -40
+
+  shippingIcon:{
+    left: 20,
   },
-  description7:{
-    fontSize: 19,
-    left: 50,
-    color: 'black',
-    top: -65
+
+  shippingText: {
+    bottom: 52,
+    left: 55,
+    fontWeight: '400',
+    fontSize: 16,
   },
-  up:{
-    width: 30,
-    height: 30,
-    top: -90,
-    left: 320,
-  },
-  description8:{
-    fontSize: 19,
-    left: 50,
-    color: '#737373', 
-    top: -95,
-  },
-  date:{
-    fontSize: 19,
-    left: 50,
+
+  estimatedDelivery: {
+    bottom: 44,
+    fontSize: 16,
+    left: 55,
     color: '#737373',
-    top: -80,
+  },
+
+  date:{
+    bottom: 39,
+    left: 55,
+    color: '#737373',
+    fontSize: 16,
+  },
+
+  arrow: {
+    bottom: 28,
+    left: 330,
+    width: 28,
+    height: 28
   }
+
 });
