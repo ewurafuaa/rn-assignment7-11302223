@@ -1,57 +1,48 @@
-import React from "react";
-import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import React, { useRef, useState } from 'react';
+import { View, TouchableOpacity, Image, Animated, Dimensions, StyleSheet, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Sidebar from '../Components/Sidebar';
+
+const screenWidth = Dimensions.get('window').width;
 
 export default function Header() {
+    const sidebarAnimation = useRef(new Animated.Value(-screenWidth)).current;
+    const [isSidebarVisible, setSidebarVisible] = useState(false);
     const navigation = useNavigation();
-    const translateX = useSharedValue(-300);
 
-    const animatedStyle = useAnimatedStyle(() => {
-        return {
-            transform: [{ translateX: translateX.value }],
-            zIndex: 1000,
-        };
-    });
-
-    const toggleMenu = () => {
-        translateX.value = translateX.value === 0 ? withTiming(-300, { duration: 300 }) : withTiming(0, { duration: 300 });
+    const toggleSidebar = () => {
+        if (isSidebarVisible) {
+            Animated.timing(sidebarAnimation, {
+                toValue: -screenWidth,
+                duration: 300,
+                useNativeDriver: true,
+            }).start(() => setSidebarVisible(false));
+        } else {
+            setSidebarVisible(true);
+            Animated.timing(sidebarAnimation, {
+                toValue: 0,
+                duration: 300,
+                useNativeDriver: true,
+            }).start();
+        }
     };
 
     return (
-    <View style={styles.headerContainer}>
-        <View style={styles.container}>
-            <View>
-                <TouchableOpacity onPress={toggleMenu}>
+        <View style={styles.headerContainer}>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={toggleSidebar}>
                     <Image style={styles.menu} source={require('../assets/Menu.png')} />
                 </TouchableOpacity>
-            </View>
-            <View>
                 <Image style={styles.logo} source={require('../assets/Logo.png')} />
+                <View style={styles.iconsContainer}>
+                    <Image style={styles.search} source={require('../assets/Search.png')} />
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
+                        <Image style={styles.shoppingBag} source={require('../assets/shoppingBag.png')} />
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.iconsContainer}>
-                <Image style={styles.search} source={require('../assets/Search.png')} />
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
-                    <Image style={styles.shoppingBag} source={require('../assets/shoppingBag.png')} />
-                </TouchableOpacity>
-            </View>
-            <Animated.View style={[styles.slidingMenu, animatedStyle]}>
-                <TouchableOpacity style={styles.closeButtonContainer} onPress={toggleMenu}>
-                    <Image style={styles.closeButton} source={require('../assets/Close.png')} />
-                </TouchableOpacity>
-                <Text style={styles.menuNameText}>CALEB TETTEH</Text>
-                <View style={styles.line} />
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.menuText}>Store</Text>
-                </TouchableOpacity>
-                <Text style={styles.menuText}>Locations</Text>
-                <Text style={styles.menuText}>Blog</Text>
-                <Text style={styles.menuText}>Jewelry</Text>
-                <Text style={styles.menuText}>Electronics</Text>
-                <Text style={styles.menuText}>Clothing</Text>
-            </Animated.View>
+            {isSidebarVisible && <Sidebar toggleSidebar={toggleSidebar} sidebarAnimation={sidebarAnimation} />}
         </View>
-    </View>
     );
 }
 
@@ -98,42 +89,5 @@ const styles = StyleSheet.create({
     },
     button: {
         position: 'relative',
-    },
-    slidingMenu: {
-        position: 'absolute',
-        left: 0,
-        top: 60,
-        width: 300,
-        height: 900,
-        backgroundColor: 'white',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 5,
-        padding: 20,
-    },
-    closeButtonContainer: {
-        alignSelf: 'flex-start',
-    },
-    closeButton: {
-        width: 30,
-        height: 30,
-    },
-    menuNameText:{
-        fontSize: 20,
-        marginVertical: 10,
-        letterSpacing: 3
-    },
-    menuText: {
-        fontSize: 18,
-        marginVertical: 10,
-    },
-    line:{
-        height: 1, 
-        width: 120, 
-        backgroundColor: '#D18035', 
-        marginVertical: 5,
-        left: 25
     }
 });

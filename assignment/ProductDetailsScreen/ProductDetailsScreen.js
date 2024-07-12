@@ -4,7 +4,7 @@ import Header from "./Header";
 import ProductInfo from "./ProductInfo";
 import Footer from "./Footer";
 
-function ProductDetails({navigation, route}){
+export default function ProductDetails({navigation, route}){
     return(
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scroll}>
@@ -24,4 +24,3 @@ const styles = StyleSheet.create({
         flexGrow: 1
     }
 })
-export default ProductDetails;

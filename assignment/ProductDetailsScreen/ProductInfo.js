@@ -7,7 +7,7 @@ export default function ProductInfo({ route }) {
   return (
     <View style={styles.container}>
       <Image source={product.image} style={styles.image} />
-      <Text style={styles.name}>{product.name}</Text>
+      <Text style={styles.name}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.price}>{product.price}</Text>
       <Text style={styles.materialText}>MATERIALS</Text>
@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     marginVertical: 10,
-
   },
   description: {
     fontSize: 16,

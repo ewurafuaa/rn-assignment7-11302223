@@ -8,8 +8,10 @@ export default function Header(){
         <>
         <View style={styles.header}>
             <TouchableOpacity style={styles.return} onPress={() => navigation.navigate('Home')}>
-                <Image style={styles.logo} source={require('../assets/Logo.png')}></Image>
+                <Image style={styles.backward} source={require('../assets/Backward.png')}></Image>
             </TouchableOpacity>
+
+            <Image style={styles.logo} source={require('../assets/Logo.png')}></Image>
             <Image style={styles.search} source={require('../assets/Search.png')}></Image>
         </View>
 
@@ -33,11 +35,19 @@ const styles = StyleSheet.create({
 
     return: {
         position: 'absolute',
-        left: 160,
-        top: 60
+        right: 355,
+        top: 63,
+    },
+
+    backward: {
+        width: 35,
+        height: 35
     },
 
     logo:{
+        position: 'absolute',
+        left: 160,
+        top: 60,
         width: 99,
         height: 40,
     },
@@ -58,7 +68,7 @@ const styles = StyleSheet.create({
 
     checkout: {
         position: 'absolute',
-        top: 70,
+        top: 60,
         right: 103,
         fontSize: 27,
         letterSpacing: 6,
