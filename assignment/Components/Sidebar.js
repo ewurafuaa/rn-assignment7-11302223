@@ -1,4 +1,3 @@
-// Sidebar.js
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, Animated, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
